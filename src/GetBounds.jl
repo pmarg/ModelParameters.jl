@@ -15,7 +15,7 @@ end
 
 Returns the lower bounds of parameter vector. Useful for constrained optimization.
 """
-function get_lower_bounds(parameters::Array{Float64)
+function get_lower_bounds(parameters::Array{Float64})
     lower_bound = zeros(size(parameters, 1))
     for i ∈ 1:size(parameters, 1)
         lower_bound[i] = parameters[i].lb
@@ -27,7 +27,7 @@ end
 
 Returns the upper bounds of parameter vector. Useful for constrained optimization.
 """
-function get_upper_bounds(parameters::Array{Float64)
+function get_upper_bounds(parameters::Array{Float64})
     upper_bound = zeros(size(parameters, 1))
     for i ∈ 1:size(parameters, 1)
         upper_bound[i] = parameters[i].ub
