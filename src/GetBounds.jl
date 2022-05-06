@@ -41,7 +41,7 @@ Returns the lower and upper bound of a single parameter withing a `ParameterGrou
 """
 function get_bounds(name::ParameterGroup, val::Symbol)
     if typeof(getfield(name, val)) <: BoundedParameter
-        return getfield(getfield(name, val), :lb), getfield(getfield(name, val), :ub)
+        return getfield(getfield(name, val), :lb), getfield(getfield(name, val, :ub))
     else
         @warn "No bounds defined"
         return nothing
