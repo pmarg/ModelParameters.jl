@@ -1,9 +1,9 @@
 """
-    get_initial_guess(parameters::Array{Float64})
+    get_initial_guess(parameters)
 
 Returns the values of parameter vector. Useful for initial guess for optimization.
 """
-function get_initial_guess(parameters::Array{Float64})
+function get_initial_guess(parameters)
     initial_guess = zeros(size(parameters, 1))
     for i ∈ 1:size(parameters, 1)
         initial_guess[i] = parameters[i].value
@@ -15,7 +15,7 @@ end
 
 Returns the lower bounds of parameter vector. Useful for constrained optimization.
 """
-function get_lower_bounds(parameters::Array{Float64})
+function get_lower_bounds(parameters)
     lower_bound = zeros(size(parameters, 1))
     for i ∈ 1:size(parameters, 1)
         lower_bound[i] = parameters[i].lb
@@ -27,7 +27,7 @@ end
 
 Returns the upper bounds of parameter vector. Useful for constrained optimization.
 """
-function get_upper_bounds(parameters::Array{Float64})
+function get_upper_bounds(parameters)
     upper_bound = zeros(size(parameters, 1))
     for i ∈ 1:size(parameters, 1)
         upper_bound[i] = parameters[i].ub
