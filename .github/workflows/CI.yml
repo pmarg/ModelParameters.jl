@@ -26,6 +26,8 @@ jobs:
         arch:
           - x64
     steps:
+      - name: Julia TagBot
+        uses: JuliaRegistries/TagBot@v1.10.0
       - uses: actions/checkout@v2
       - uses: julia-actions/setup-julia@v1
         with:
