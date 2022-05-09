@@ -1,7 +1,7 @@
 name = "ModelParameters"
 uuid = "48fb21ed-9592-4fe5-901c-033ebb3f471c"
 authors = ["Panos Margaris"]
-version = "0.1.0"
+version = "1.0.3"
 
 [compat]
 julia = "1.7"
