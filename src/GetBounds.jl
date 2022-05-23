@@ -49,3 +49,16 @@ function get_bounds(name::ParameterGroup, val::Symbol)
         return nothing
     end
 end
+function get_bounds(parameters)
+    upper_bound = zeros(size(fieldnames(typeof(parameters)), 1))
+    lower_bound = zeros(size(upper_bound, 1))
+    for (i, name) in enumerate(fieldnames(typeof(parameters)))
+        if typeof(getfield(parameters, name)) <: BoundedParameter
+            upper_bound[i] = getfield(parameters, name).ub
+            lower_bound[i] = getfield(parameters, name).lb
+        else
+            @error "Parameter $name doesn't have bounds"
+        end
+    end
+    return lower_bound, upper_bound
+end

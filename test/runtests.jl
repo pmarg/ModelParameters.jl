@@ -76,12 +76,19 @@ end
         y3::Parameter{Int64,String} = x3
         y4::BoundedParameter{Int64,String} = x4
     end
+
+    @kwdef struct InitialGuess <: ParameterGroup
+        y2::BoundedParameter{Float64,String} = x2
+        y4::BoundedParameter{Int64,String} = x4
+    end
+
     T = Params()
+    IG = InitialGuess()
 
     initial_guess = get_initial_guess([x2, x4])
     @test initial_guess == [1.0, 1]
 
-    bounds = get_bounds(T,:y2)
+    bounds = get_bounds(T, :y2)
     @test bounds == (0.0, 10.0)
 
     lower_bounds = get_lower_bounds([x2, x4])
@@ -90,8 +97,12 @@ end
     upper_bounds = get_upper_bounds([x2, x4])
     @test upper_bounds == [10.0, 10]
 
-    descr = description(T,:y1)
+    descr = description(T, :y1)
     @test descr == "x1"
+
+    lb, ub = get_bounds(IG)
+    @test lb == [0.0, 0.0]
+    @test ub == [10.0, 10.0]
 
 end
 
